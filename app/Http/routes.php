@@ -79,3 +79,9 @@ Route::get('record/get', 'RecordController@get');
 Route::post('record/create', 'RecordController@create');
 Route::post('record/update', 'RecordController@update');
 Route::post('record/delete', 'RecordController@delete');
+
+Route::post('user/login', function() {
+    $email = Request::input('email');
+    $pwd = Request::input('password');
+    return response(array('ret' => Auth::attempt(['email' => $email, 'password' => $pwd])));
+});
